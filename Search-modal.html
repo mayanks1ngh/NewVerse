@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search News</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+<button role="button" aria-haspopup="true" aria-controls="modal-dialog" aria-label="Open Modal"></button>
+  <dialog id="modal-dialog" role="dialog" aria-label="Modal" aria-modal="true" class="modal-dialog" open=""></dialog>
+    <div class="search-modal">
+        <div class="search-modal_headandsearch">
+          <div class="search-modal_header">
+            <h1 class="search-modal_Title">Search News</h1>
+            <button class="close-btn">&times;</button>
+          </div>  
+            <label class="search-modal_input"></label>
+            <input type="text" placeholder="Search News here..." id="search-input">
+            </label>  
+        </div>
+        <div class="search-modal_category-news">
+            <h2 class="search-modal_category-Title">Category News</h2>
+            <div class="search-modal_buttons">
+            <button class="category-btn active">Sport</button>
+            <button class="category-btn">Health</button>
+            <button class="category-btn">Political</button>
+            <button class="category-btn">Business</button>
+            <button class="category-btn">Finance</button>
+            <button class="category-btn">Life</button>
+            <button class="category-btn">Entertainment</button>
+            </div>
+         </div>
+      </div>  
+  </dialog>     
+    <!-- Search Icon In Header Code from Will-Myers.com-->
+<script>
+  /**
+ * Handles the dialog behavior
+ */
+function handleModal(/** @type {HTMLDialogElement} */ target) {
+  function open() {   // Opens the modal and sets focus to it.
+    target.showModal()    //Display the modal
+    target.focus()      // set focus the modal
+  }
+      // Open the modal initially
+  open()
+  target.addEventListener('cancel', (event) => {
+    event.preventDefault(); //Prevents the modal from closing when the cancel event is triggered (e.g., pressing the Escape key by default behavior).
+  })
+  //return  //The return statement here causes the function to exit prematurely, meaning the following code for 
+          //closing, toggling, and attaching event listeners will never be executed. This is likely an oversight or debugging artifact.
+
+  function close() {  //close the modal
+    target.close()    //hides the modal
+  }
+
+  function toggle() {     //Toggles the modals visibilty
+    target.open ? close() : open()  // open or close based on the modal's current state.
+  }
+    // Attach event listeners to elements that control the modal
+  const buttons = /** @type {HTMLElement} */ (
+    document.querySelectorAll(`[aria-controls="${target.id}"]`) //Selects elements that control the modal (based on aria-controls attribute) and attaches a click event listener to toggle the modal.
+    //The global aria-controls property identifies the element (or elements) whose contents or presence are controlled by the element on which this attribute is set.
+  )
+
+  for (const button of buttons) {
+    button.addEventListener("click", () => {
+      toggle()
+    })
+  }
+
+  target.addEventListener("click", (event) => {       //Closes the modal if the user clicks outside its content area.
+    //    modal = dialog >   overlay   >    content    ?? dialog
+    const modal = target?.children?.[0]?.children?.[0] ?? target  //modal: The actual content of the modal.
+    const boundingRect = modal.getBoundingClientRect()    //boundingRect: The bounding box of the modal content
+    //isInDialog: Boolean indicating whether the click was inside the modal content
+    const isInDialog =    
+      boundingRect.top <= event.clientY &&
+      event.clientY <= boundingRect.top + boundingRect.height &&
+      boundingRect.left <= event.clientX &&
+      event.clientX <= boundingRect.left + boundingRect.width
+
+    if (!isInDialog) close()
+  })
+  //Closes the modal when the Escape key is pressed.
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close()
+  })
+}
+
+/**
+ * Hydrate modals(s)
+ */
+ //Ensures the handleModal function is called for each modal on the page once the DOM content is fully loaded.
+document.addEventListener("DOMContentLoaded", () => {
+  const modals = /** @type {HTMLElement[]} */ (
+    document.querySelectorAll('[aria-modal="true"]')
+  )
+  for (const modal of modals) handleModal(modal)
+})
+</script>
+</body>
+</html>
+
+ 

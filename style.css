@@ -1,0 +1,224 @@
+/* General reset for padding and margin */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+.header_logo {
+    height: 40px;
+    width: 50px;
+    object-fit: contain;
+    display: block; /* Ensure it behaves like a block element */
+    margin: 0 auto; /* Center the logo horizontally */
+    padding: 5px; /* Add some padding if necessary */
+}
+
+/* Optional additional styles for a container if you have one */
+.header_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Set a background color if needed */
+    padding: 10px 0; /* Add padding to the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    border-bottom: 1px solid #e0e0e0; /* Add a border at the bottom */
+}
+
+/* Basic styling for the navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+    position: relative;
+}
+
+.navbar-brand a {
+    color: #e9dede;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+    color: #ff6347;
+}
+
+/* Navbar right section styling */
+.navbar-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-right a
+ {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    background-color: #555;
+}
+
+/* Toggle button styles */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.search-icon-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.search-container {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    padding: 20px;
+    z-index: 1000;
+}
+.search-modal_icon
+{
+    height: 2px;
+    align-self: end;
+    width: 2px;
+}
+.search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.category-news {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.category-news h3 {
+    margin: 0 0 10px;
+}
+
+.category-btn {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category-btn:hover {
+    background-color: #ddd;
+}
+
+.category-btn.active {
+    background-color: #333;
+    color: white;
+}
+/* Hamburger icon styles */
+.hamburger-icon {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    position: relative;
+}
+
+.hamburger-icon:before,
+.hamburger-icon:after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-icon:before {
+    top: -7px;
+}
+
+.hamburger-icon:after 
+{
+    top: 7px;
+}
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-links, .navbar-right {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-links.active, .navbar-right.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
