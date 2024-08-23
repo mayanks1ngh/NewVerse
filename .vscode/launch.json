@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:5500/public/post.html?title=welcome&content=Hey+folks&image=WhatsApp+Image+2024-07-10+at+22.17.52_9fd47273.jpg",
+            "request": "launch",
+            "url": "http://127.0.0.1:5500/public/post.html?title=welcome&content=Hey+folks&image=WhatsApp+Image+2024-07-10+at+22.17.52_9fd47273.jpg"
+        }
+    ]
+}
